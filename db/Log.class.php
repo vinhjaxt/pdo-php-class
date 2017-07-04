@@ -6,7 +6,7 @@ if(!class_exists('Log')){
 	* @author		Author: Vivek Wicky Aswal. (https://twitter.com/#!/VivekWickyAswal)
 	* @git 			https://github.com/indieteq/PHP-MySQL-PDO-Database-Class
 	* @version      0.2a
-	* Edited by VinhNoName
+	* Edited by Vinhjaxt
 	*/
 	class Log {
 			
