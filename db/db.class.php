@@ -14,7 +14,7 @@ if(!function_exists('res_ajax')){
 	function res_ajax($mix,$force_json=false){
 	  while(@ob_end_clean());
 	  if($force_json || (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest')){
-		  header('Content-Type: text/javascript;charset=utf-8');
+		  @header('Content-Type: text/javascript;charset=utf-8');
 		  if(!empty($_REQUEST['callback']))
 			 echo strip_tags($_REQUEST['callback']),'(',json_encode($mix),')';
 		  else
@@ -91,11 +91,11 @@ if(!function_exists('send_error')){
 		if(PHP_SAPI=='cli') exit($error);
 		$protocol = 'HTTP/1.0';
 		if(isset($_SERVER['SERVER_PROTOCOL']) && 'HTTP/1.1' == $_SERVER['SERVER_PROTOCOL']) $protocol = 'HTTP/1.1';
-		header("$protocol 503 $error", true, 503 );
-		header('Status: 503 '.$error);
-		header('X-Status: 503 '.$error);
-		header('Retry-After: 300');
-		exit();
+		@header("$protocol 503 $error", true, 503 );
+		@header('Status: 503 '.$error);
+		@header('X-Status: 503 '.$error);
+		@header('Retry-After: 300');
+		exit($error);
 	}//send_error
 }//function_exists
 
